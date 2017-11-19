@@ -1,7 +1,7 @@
 <template>
-    <v-toolbar class="green lighten-2">
+    <v-toolbar fixed class="green darken-1">
         <v-toolbar-title>
-            Financial Management
+            <a href=''>Financial Management</a>
         </v-toolbar-title>
         <v-spacer/>
         <v-toolbar-items class="hidden-sm-and-down">

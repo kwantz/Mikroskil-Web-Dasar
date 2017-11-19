@@ -1,0 +1,82 @@
+/* Untuk Toolbar */
+nav .toolbar__title a,
+nav .btn__content {
+    font-weight: bold;
+    text-decoration: none;
+    color: #eee;
+}
+nav .toolbar__title {
+    font-size: 30px;
+}
+nav .btn__content {
+    font-size: 17px;
+}
+
+/* Untuk Homepage */
+main {
+    margin-top: 64px;
+}
+img {
+    margin-right: 50px;
+    width: 250px;
+    height: 250px;
+}
+.homepage-vue h1 {
+    font-size: 50px;
+}
+.homepage-vue h2 {
+    font-size: 30px;
+}
+.homepage-vue button {
+    width: 75%;
+    height: 55px;
+    font-size: 20px;
+    margin: 10px;
+}
+
+.color-white {
+    color: #fff
+}
+
+/* Untuk Account */
+.flex.with-padding {
+    padding: 10px;
+}
+.flex.border-bottom {
+    border-bottom: 1px solid black !important;
+}
+.flex.border-right {
+    border-right: 1px solid black !important;
+}
+.money-plus {
+    color: #28cb7c;
+}
+.money-minus {
+    color: #e74c3c;
+}
+
+main .tabs__item {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+main .tabs__slider {
+    height: 3px;
+    background-color: #fff!important;
+    border-color: #fff!important;
+}
+
+.input-form {
+    height: 528px;
+    padding: 5px;
+    background-color: white;
+}
+
+.input-form .layout.row.wrap {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.input-form .layout.row.wrap .flex {
+    padding: 10px;
+}
