@@ -25,10 +25,11 @@
                 <h1 class="pl-3 pt-1 pb-1 mt-5 green darken-1 color-white">Add Account</h1>
                 <v-form class="pl-3 pr-3 mt-3">
                     <v-text-field
+                        v-model="objRequest.name"
                         label="Name"
                         required
                     />
-                    <v-btn dark color="green darken-1">Submit</v-btn>
+                    <v-btn dark color="green darken-1" v-on:click="addAccount">Submit</v-btn>
                 </v-form>
             </v-layout>
         </v-flex>
@@ -36,10 +37,20 @@
 </template>
 
 <script>
+import method from '../method';
+
 export default {
     name: 'HelloWorld',
+    methods: method,
+
     data () {
         return {
+            accountId: this.$route.params.id,
+            objRequest: {
+                name: "",
+                balance: 0,
+                currency: "IDR"
+            },
             msg: 'Welcome to Your Vue.js App'
         }
     }

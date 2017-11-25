@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Account from '@/components/Account'
 import ListRecord from '@/components/ListRecord'
 import AddRecord from '@/components/AddRecord'
+import EditRecord from '@/components/EditRecord'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
             path: '/account/:id/add',
             name: 'AddRecord',
             component: AddRecord
+        },
+        {
+            path: '/account/:idAccount/record/:id',
+            name: 'EditRecord',
+            component: EditRecord
         }
     ]
 })

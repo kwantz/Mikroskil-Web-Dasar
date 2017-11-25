@@ -11,9 +11,10 @@ import Chart from 'chart.js'
 export default {
     props: ['title', 'id'],
     mounted () {
-        if(this.id === 'lineChart') {
+        if (this.id === 'lineChart') {
             let ctx = document.getElementById('lineChart').getContext('2d');
-            new Chart(ctx, {
+            // eslint-disable-next-line
+            const chart = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: ["10/19/17", "10/24/17", "10/29/17", "11/3/17", "11/8/17", "11/13/17", "11/18/17"],
@@ -27,7 +28,8 @@ export default {
             });
         } else {
             let pcx = document.getElementById('pieChart').getContext('2d');
-            new Chart(pcx, {
+            // eslint-disable-next-line
+            const chart = new Chart(pcx, {
                 type: 'doughnut',
                 data: {
                     labels: ["10/19/17", "10/24/17", "10/29/17", "11/3/17", "11/8/17", "11/13/17", "11/18/17"],

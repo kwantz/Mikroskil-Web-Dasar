@@ -1,4 +1,4 @@
-const { record } = require('../models');
+const { account, record } = require('../models');
 const { returnJsonResponse } = require('./GlobalController');
 
 module.exports = {
@@ -24,8 +24,16 @@ module.exports = {
     async postRecordByAccount (req, res) {
         let objData;
         objData = req.body;
-        objData["is_deleted"] = false;
-        objData["id_account"] = req.params.id_account;
+        objData['is_deleted'] = false;
+        objData['id_account'] = req.params.id_account;
+
+        const query = { where: { id: req.params.id_account } };
+        const accountData = await account.findOne(query);
+        
+        accountData.balance = (objData['type'] === '+')
+            ? accountData.balance += Number(objData['amount'])
+            : accountData.balance -= Number(objData['amount']);
+        await account.update(accountData.dataValues, query);
 
         const objRes = await record.create(objData);
         returnJsonResponse(res, objRes);

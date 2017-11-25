@@ -13,6 +13,7 @@ module.exports = {
         "indent": 0,
         "quotes": 0,
         "semi": 0,
+        "no-console": 0,
         "linebreak-style": [
             "error",
             "unix"
