@@ -1,16 +1,29 @@
 const { account, record } = require('../models');
-const { returnJsonResponse } = require('./GlobalController');
+const { returnJsonResponse, getArrayChart, getArrayDougnat } = require('./GlobalController');
 
 module.exports = {
     async getRecord (req, res) {
+        let query = { order: [['date', 'DESC']] };
+
+        if (req.query.page)
+            query['limit'] = Number(req.query.page);
+
         const objRes = await record.findAll();
         returnJsonResponse(res, objRes);
     },
 
     async getRecordByAccount (req, res) {
         const { id_account } = req.params;
-        const objRes = await record.findAll({ where: { id_account } });
 
+        let query = {
+            where: { id_account },
+            order: [['date', 'DESC']]
+        };
+
+        if (req.query.page)
+            query['limit'] = Number(req.query.page);
+
+        const objRes = await record.findAll(query);
         returnJsonResponse(res, objRes);
     },
 
@@ -29,7 +42,7 @@ module.exports = {
 
         const query = { where: { id: req.params.id_account } };
         const accountData = await account.findOne(query);
-        
+
         accountData.balance = (objData['type'] === '+')
             ? accountData.balance += Number(objData['amount'])
             : accountData.balance -= Number(objData['amount']);
@@ -55,5 +68,26 @@ module.exports = {
         const objRes = await record.findOne({ where: { id, id_account } });
 
         returnJsonResponse(res, objRes);
+    },
+
+    async getChartByDay (req, res) {
+        const { id_account } = req.params;
+        const day = req.query.day;
+
+        const dataRecord = await record.findAll({ where: { id_account }, order: [['date', 'ASC']] });
+        const arrayRecord = getArrayChart(dataRecord);
+
+        returnJsonResponse(res, arrayRecord);
+    },
+
+
+    async getChartByCategory (req, res) {
+        const { id_account } = req.params;
+        const day = req.query.day;
+
+        const dataRecord = await record.findAll({ where: { id_account }, order: [['date', 'ASC']] });
+        const arrayRecord = getArrayDougnat(dataRecord);
+
+        returnJsonResponse(res, arrayRecord);
     }
 }

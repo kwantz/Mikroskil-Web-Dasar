@@ -9,6 +9,8 @@ module.exports = (app) => {
     app.get('/account/:id', AccountController.getAccountById);
     app.get('/account/:id_account/record', RecordController.getRecordByAccount);
     app.get('/account/:id_account/record/:id', RecordController.getRecordByIdAndAccount);
+    app.get('/account/:id_account/record/chart/day', RecordController.getChartByDay);
+    app.get('/account/:id_account/record/chart/category', RecordController.getChartByCategory);
 
     app.post('/account', AccountController.postAccount);
     app.post('/account/:id_account/record', RecordController.postRecordByAccount);
