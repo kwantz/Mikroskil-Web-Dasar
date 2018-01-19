@@ -14,9 +14,9 @@ module.exports = {
         };
 
         const akhir = {
-            hari: new Date('2017', '11', '2').getDate(),
-            bulan: new Date('2017', '11', '2').getMonth(),
-            tahun: new Date('2017', '11', '2').getFullYear(),
+            hari: new Date().getDate(),
+            bulan: new Date().getMonth(),
+            tahun: new Date().getFullYear(),
         }
 
         const timeAwal = new Date(awal.tahun, awal.bulan, awal.hari).getTime();

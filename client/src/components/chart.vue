@@ -7,7 +7,6 @@
 
 <script>
 import method from '../method'
-import Chart from 'chart.js'
 
 export default {
     props: ['title', 'id'],

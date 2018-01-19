@@ -3,7 +3,7 @@ const { returnJsonResponse, getArrayChart, getArrayDougnat } = require('./Global
 
 module.exports = {
     async getRecord (req, res) {
-        let query = { order: [['date', 'DESC']] };
+        let query = { order: [['date', 'ASC']] };
 
         if (req.query.page)
             query['limit'] = Number(req.query.page);
@@ -17,7 +17,7 @@ module.exports = {
 
         let query = {
             where: { id_account },
-            order: [['date', 'DESC']]
+            order: [['date', 'ASC']]
         };
 
         if (req.query.page)

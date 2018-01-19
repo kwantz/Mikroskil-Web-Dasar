@@ -11,13 +11,26 @@
             <h2 v-if="record.type === '-'" class="money-minus">
                 - {{ record.currency }} {{ record.amount }}
             </h2>
-            <h4>{{ record.date }}</h4>
+            <h4>{{ tanggal }}</h4>
         </v-flex>
     </v-layout>
 </template>
 
 <script>
 export default {
-    props: ['record']
+    data () {
+        return {
+            tanggal: null,
+        }
+    },
+    props: ['record'],
+    beforeMount() {
+        const arrayWeek = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu']
+        const arrayMonth = ['Januari', 'Februari', 'Maret', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'] 
+        const date = new Date(this.record.date);
+        
+        this.tanggal = `${arrayWeek[date.getDay()]}, ${date.getDate()} ${arrayMonth[date.getMonth()]} ${date.getFullYear()}`;
+        console.log(date.toString());
+    }
 }
 </script>

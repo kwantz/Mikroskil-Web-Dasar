@@ -76,7 +76,7 @@ export default {
                 this.arrayLineLabels.push(`${hari}/${bulan}/${tahun}`);
                 this.arrayLineDatas.push(response.data[i][1]);
             }
-
+            // eslint-disable-next-line
             const chart = new Chart(document.getElementById('lineChart').getContext('2d'), {
                 type: 'line',
                 data: {
@@ -95,14 +95,14 @@ export default {
     getChartByCategory () {
         axios.get('http://localhost:3000/account/' + this.$route.params.id + '/record/chart/category')
         .then(response => {
-            const len = response.data.length;
+            // const len = response.data.length;
             console.log(response.data);
 
             response.data.forEach(dataChart => {
                 this.arrayDoughnutLabels.push(dataChart[0]);
                 this.arrayDoughnutDatas.push(dataChart[1]);
             });
-            
+            // eslint-disable-next-line
             const chart = new Chart(document.getElementById('pieChart').getContext('2d'), {
                 type: 'doughnut',
                 data: {
